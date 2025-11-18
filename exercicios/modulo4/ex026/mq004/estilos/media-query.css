@@ -2,47 +2,83 @@
 
 /* Todas as demais midias */
 
-*{
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 1em;
-    margin: 0px;
-    padding: 0px;
-    box-sizing: border-box;
+/* 
+
+Typical Devices Breakpoints 
+
+Pequenas telas: até 576px
+Celular: 576px
+Tablet: 768px
+Desktop: 992px
+Grandes Telas: 1200px
+
+*/
+@media print{ /* Impressão */
+
+    * {
+        font-family: 'Courier New', Courier, monospace;
+    }
+
+    body{
+        background: url(../imagens/back-print.jpg); /* desnecessário, pois ele não imprime imagem de fundo */        
+    }
+
+    main{
+        width: 90vw;
+        border: 2px solid black;
+    }
+
+    main::after{
+        content: 'Essa impressão foi feita através do site www.cursoemvideo.com';
+        text-decoration: overline;        
+    }
+
+    main h1{
+        text-shadow: none;
+        color: black;
+    }
+
+    img#phone{ display: none; }
+    img#tablet{ display: none; }
+    img#print{ display: block; }
+    img#pc{ display: none; }
+    img#tv{ display: none; }
 }
 
-html{    
-    height: 100vh;
+@media screen and (min-width: 768px) and (max-width: 992px){ /* Tablet */
+
+    body{
+        background: black url(../imagens/back-tablet.jpg) no-repeat;
+    }
+
+    img#phone{ display: none; }
+    img#tablet{ display: block; }
+    img#print{ display: none; }
+    img#pc{ display: none; }
+    img#tv{ display: none; }
 }
 
-body{
-    background: black url(../imagens/back-phone.jpg) no-repeat;
-    background-size: cover;
-    background-position: center center;
+@media screen and (min-width: 992px) and (max-width: 1200px){ /* Desktop */
+    
+    body{
+        background: black url(../imagens/back-pc.jpg) no-repeat;
+    }
+
+    img#phone{ display: none; }
+    img#tablet{ display: none; }
+    img#print{ display: none; }
+    img#pc{ display: block; }
+    img#tv{ display: none; }
 }
 
-main{
-    background-color: rgba(255, 255, 255, 0.842);
-    width: 90vw;
-    margin: auto;
-    margin-top: 20px;
-    border-radius: 10px;
-    padding: 10px;
-}
+@media screen and (min-width: 1200px){ /* Grandes Telas */
+    body{
+        background: black url(../imagens/back-tv.jpg) no-repeat;
+    }
 
-h1{
-    font-size: 2em;
-    text-align: center;
-    color: white;
-    text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.493);
+    img#phone{ display: none; }
+    img#tablet{ display: none; }
+    img#print{ display: none; }
+    img#pc{ display: none; }
+    img#tv{ display: block; }
 }
-
-img{
-    display: block;
-    margin: auto;
-}
-
-img#phone{ display: block; }
-img#tablet{ display: none; }
-img#print{ display: none; }
-img#pc{ display: none; }
-img#tv{ display: none; }
